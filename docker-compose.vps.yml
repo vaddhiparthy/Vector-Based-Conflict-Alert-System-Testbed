@@ -1,5 +1,6 @@
 services:
   vcas-demo:
+    image: astrax-compute-cloud-professional-vcas:latest
     build:
       context: .
       dockerfile: docker/api.Dockerfile
