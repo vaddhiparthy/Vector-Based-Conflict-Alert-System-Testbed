@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/api.Dockerfile
-    container_name: vcas-demo
+    container_name: astrax-compute-cloud-professional-vcas
     restart: unless-stopped
     env_file:
       - .env.vps
