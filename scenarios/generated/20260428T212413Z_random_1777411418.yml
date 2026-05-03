@@ -1,0 +1,506 @@
+dt_s: 1.0
+duration_s: 600
+name: generated_random_1777411418
+description: Generated random waypoint traffic (seeded). Background aircraft are spread
+  out; TST1/TST2 only converge late into a conflict window.
+seed: 1777411418
+reference:
+  aerodrome:
+    lat: 42.2343889
+    lon: -85.5515556
+    alt_m: 100.0
+aircraft:
+- callsign: BG01
+  icao24: BG01
+  waypoints:
+  - t_s: 102
+    lat: 42.32118607076457
+    lon: -85.3371033347764
+    alt_m: 7700
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 263
+    lat: 42.090369348391576
+    lon: -85.84520139706295
+    alt_m: 7700
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 490
+    lat: 42.373080345374696
+    lon: -85.72383286012696
+    alt_m: 7700
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG02
+  icao24: BG02
+  waypoints:
+  - t_s: 180
+    lat: 42.073790167212664
+    lon: -85.77733641102297
+    alt_m: 8400
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 355
+    lat: 42.40883134312115
+    lon: -85.58089132803696
+    alt_m: 8400
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 574
+    lat: 42.58823646897434
+    lon: -85.21343224422597
+    alt_m: 8400
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG03
+  icao24: BG03
+  waypoints:
+  - t_s: 109
+    lat: 42.30684475158228
+    lon: -85.10155387261406
+    alt_m: 9100
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 268
+    lat: 42.068001958894335
+    lon: -85.46153928067986
+    alt_m: 9100
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 585
+    lat: 42.31846843483045
+    lon: -85.95655997670364
+    alt_m: 9100
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG04
+  icao24: BG04
+  waypoints:
+  - t_s: 51
+    lat: 42.023223801730275
+    lon: -85.78003559546667
+    alt_m: 9800
+    gs_mps: 90
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 276
+    lat: 42.176989564827664
+    lon: -85.74362999935327
+    alt_m: 9800
+    gs_mps: 90
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 571
+    lat: 42.300865122609885
+    lon: -85.25054035842211
+    alt_m: 9800
+    gs_mps: 90
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG05
+  icao24: BG05
+  waypoints:
+  - t_s: 149
+    lat: 41.95852379737372
+    lon: -85.64619466363109
+    alt_m: 10500
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 285
+    lat: 42.548781544729486
+    lon: -85.67489221304727
+    alt_m: 10500
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 462
+    lat: 42.40803459453721
+    lon: -85.41326960700776
+    alt_m: 10500
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG06
+  icao24: BG06
+  waypoints:
+  - t_s: 54
+    lat: 42.70267019057811
+    lon: -85.49834267065711
+    alt_m: 11200
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 286
+    lat: 42.27777828805007
+    lon: -85.79448831417183
+    alt_m: 11200
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 502
+    lat: 41.8322480129294
+    lon: -85.76654182462771
+    alt_m: 11200
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG07
+  icao24: BG07
+  waypoints:
+  - t_s: 102
+    lat: 42.39460065181487
+    lon: -85.9203464546608
+    alt_m: 11900
+    gs_mps: 115
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 279
+    lat: 42.408694727653476
+    lon: -85.27696974941384
+    alt_m: 11900
+    gs_mps: 115
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 526
+    lat: 42.454135513743694
+    lon: -85.12948229829692
+    alt_m: 11900
+    gs_mps: 115
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG08
+  icao24: BG08
+  waypoints:
+  - t_s: 182
+    lat: 42.12543702068089
+    lon: -85.82686183268048
+    alt_m: 12600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 348
+    lat: 42.327465576584956
+    lon: -85.35172251944866
+    alt_m: 12600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 564
+    lat: 42.39264788812213
+    lon: -84.95358663295887
+    alt_m: 12600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG09
+  icao24: BG09
+  waypoints:
+  - t_s: 17
+    lat: 42.01494387609082
+    lon: -86.0037804119922
+    alt_m: 13300
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 171
+    lat: 42.34383510892244
+    lon: -85.90707492850208
+    alt_m: 13300
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 461
+    lat: 42.15184740441882
+    lon: -84.91200550197459
+    alt_m: 13300
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG10
+  icao24: BG10
+  waypoints:
+  - t_s: 165
+    lat: 42.437167488284615
+    lon: -85.18779911208117
+    alt_m: 14000
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 349
+    lat: 42.31431287695325
+    lon: -85.40629173762174
+    alt_m: 14000
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 600
+    lat: 42.10525540838935
+    lon: -86.18561562541039
+    alt_m: 14000
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG11
+  icao24: BG11
+  waypoints:
+  - t_s: 69
+    lat: 42.07544796573784
+    lon: -84.97920737168265
+    alt_m: 14700
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 196
+    lat: 42.482249134837296
+    lon: -85.85031628520592
+    alt_m: 14700
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 432
+    lat: 41.985531135898704
+    lon: -85.73285761506297
+    alt_m: 14700
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG12
+  icao24: BG12
+  waypoints:
+  - t_s: 52
+    lat: 42.244469726305155
+    lon: -85.99645439863471
+    alt_m: 15400
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 209
+    lat: 42.29015462409644
+    lon: -85.1193424631595
+    alt_m: 15400
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 398
+    lat: 42.23239248689574
+    lon: -85.94669752004658
+    alt_m: 15400
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG13
+  icao24: BG13
+  waypoints:
+  - t_s: 46
+    lat: 41.88247277543204
+    lon: -85.78960787701357
+    alt_m: 16100
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 183
+    lat: 42.37955843868604
+    lon: -85.69552393134792
+    alt_m: 16100
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 497
+    lat: 42.139166154885665
+    lon: -85.239367094537
+    alt_m: 16100
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG14
+  icao24: BG14
+  waypoints:
+  - t_s: 82
+    lat: 42.459235905535266
+    lon: -85.1665730095333
+    alt_m: 16800
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 304
+    lat: 42.32340631799362
+    lon: -85.47953058687227
+    alt_m: 16800
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 506
+    lat: 42.35935487520651
+    lon: -85.9309150012902
+    alt_m: 16800
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG15
+  icao24: BG15
+  waypoints:
+  - t_s: 197
+    lat: 41.87446835887229
+    lon: -85.86889782815867
+    alt_m: 17500
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 356
+    lat: 42.52685344124305
+    lon: -85.66014527017005
+    alt_m: 17500
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 600
+    lat: 42.070936481736574
+    lon: -85.76052280982488
+    alt_m: 17500
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG16
+  icao24: BG16
+  waypoints:
+  - t_s: 87
+    lat: 42.37455052889871
+    lon: -86.19955042337372
+    alt_m: 18200
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 222
+    lat: 42.15074650536264
+    lon: -85.28858070714641
+    alt_m: 18200
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 477
+    lat: 41.92716609111866
+    lon: -85.77486065567852
+    alt_m: 18200
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG17
+  icao24: BG17
+  waypoints:
+  - t_s: 137
+    lat: 42.25317153233554
+    lon: -85.18820291331899
+    alt_m: 18900
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 304
+    lat: 42.25245051993043
+    lon: -85.35195772914672
+    alt_m: 18900
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 547
+    lat: 42.519834694249724
+    lon: -85.8378010490278
+    alt_m: 18900
+    gs_mps: 135
+    track_deg: 0
+    vs_mps: 0
+- callsign: BG18
+  icao24: BG18
+  waypoints:
+  - t_s: 17
+    lat: 42.14080407191367
+    lon: -85.9938552512671
+    alt_m: 19600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 252
+    lat: 42.45769612547801
+    lon: -85.59330993257569
+    alt_m: 19600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 443
+    lat: 42.30521523804301
+    lon: -85.80587875989056
+    alt_m: 19600
+    gs_mps: 145
+    track_deg: 0
+    vs_mps: 0
+- callsign: TST1
+  icao24: TST1
+  waypoints:
+  - t_s: 0
+    lat: 41.70604257659385
+    lon: -85.99754798330896
+    alt_m: 2200
+    gs_mps: 110
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 210
+    lat: 42.22072731533138
+    lon: -85.996952241487
+    alt_m: 2300
+    gs_mps: 105
+    track_deg: 0
+    vs_mps: -0.2
+  - t_s: 468
+    lat: 42.25938620050751
+    lon: -85.64158713875554
+    alt_m: 2200
+    gs_mps: 98
+    track_deg: 0
+    vs_mps: -0.1
+  - t_s: 588
+    lat: 42.217724032994994
+    lon: -85.46152406124446
+    alt_m: 2200
+    gs_mps: 95
+    track_deg: 0
+    vs_mps: 0
+- callsign: TST2
+  icao24: TST2
+  waypoints:
+  - t_s: 100
+    lat: 42.50550056474207
+    lon: -86.10754274497823
+    alt_m: 2200
+    gs_mps: 115
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 257
+    lat: 42.562419454901736
+    lon: -85.94836637572081
+    alt_m: 2150
+    gs_mps: 110
+    track_deg: 0
+    vs_mps: 0.15
+  - t_s: 468
+    lat: 42.217724032994994
+    lon: -85.46152406124446
+    alt_m: 2200
+    gs_mps: 100
+    track_deg: 0
+    vs_mps: 0
+  - t_s: 588
+    lat: 42.25938620050751
+    lon: -85.64158713875554
+    alt_m: 2200
+    gs_mps: 98
+    track_deg: 0
+    vs_mps: 0
