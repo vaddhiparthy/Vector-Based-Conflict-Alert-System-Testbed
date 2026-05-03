@@ -1,0 +1,76 @@
+name: terminal-departure-grid
+duration_s: 210
+dt_s: 1.0
+aircraft:
+  - callsign: DEP01
+    icao24: DEP001
+    lat: 38.940
+    lon: -77.460
+    alt_m: 300
+    gs_mps: 70.0
+    track_deg: 45.0
+    vs_mps: 2.0
+  - callsign: DEP02
+    icao24: DEP002
+    lat: 38.941
+    lon: -77.458
+    alt_m: 320
+    gs_mps: 72.0
+    track_deg: 55.0
+    vs_mps: 2.0
+  - callsign: DEP03
+    icao24: DEP003
+    lat: 38.939
+    lon: -77.462
+    alt_m: 280
+    gs_mps: 68.0
+    track_deg: 35.0
+    vs_mps: 2.0
+  - callsign: DEP04
+    icao24: DEP004
+    lat: 38.938
+    lon: -77.456
+    alt_m: 250
+    gs_mps: 66.0
+    track_deg: 65.0
+    vs_mps: 2.0
+  - callsign: DEP05
+    icao24: DEP005
+    lat: 38.942
+    lon: -77.454
+    alt_m: 280
+    gs_mps: 74.0
+    track_deg: 40.0
+    vs_mps: 2.0
+  - callsign: DEP06
+    icao24: DEP006
+    lat: 38.943
+    lon: -77.456
+    alt_m: 300
+    gs_mps: 73.0
+    track_deg: 50.0
+    vs_mps: 2.0
+  - callsign: DEP07
+    icao24: DEP007
+    lat: 38.944
+    lon: -77.452
+    alt_m: 260
+    gs_mps: 75.0
+    track_deg: 60.0
+    vs_mps: 2.0
+  - callsign: DEP08
+    icao24: DEP008
+    lat: 38.945
+    lon: -77.458
+    alt_m: 290
+    gs_mps: 71.0
+    track_deg: 30.0
+    vs_mps: 2.0
+  - callsign: DEP09
+    icao24: DEP009
+    lat: 38.940
+    lon: -77.448
+    alt_m: 270
+    gs_mps: 69.0
+    track_deg: 75.0
+    vs_mps: 2.5

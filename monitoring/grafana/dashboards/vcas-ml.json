@@ -1,0 +1,50 @@
+{
+  "id": null,
+  "title": "vCAS Alerts & ML",
+  "tags": ["vcas", "ml", "alerts"],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Alert Emissions",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(rate(vcas_alerts_total[1m]))",
+          "refId": "A",
+          "legendFormat": "total_alerts"
+        },
+        {
+          "expr": "sum(rate(vcas_thread2a_alerts_total[1m]))",
+          "refId": "B",
+          "legendFormat": "thread2a_alerts"
+        },
+        {
+          "expr": "sum(rate(vcas_thread2b_alerts_total[1m]))",
+          "refId": "C",
+          "legendFormat": "thread2b_alerts"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "ML Service Requests",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(rate(vcas_ml_requests_total[1m]))",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(vcas_ml_unavailable_total[1m]))",
+          "refId": "B"
+        }
+      ]
+    }
+  ]
+}

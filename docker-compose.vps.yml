@@ -1,0 +1,17 @@
+services:
+  vcas-demo:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    container_name: vcas-demo
+    restart: unless-stopped
+    env_file:
+      - .env.vps
+    expose:
+      - '8000'
+    networks:
+      - finlens_default
+
+networks:
+  finlens_default:
+    external: true

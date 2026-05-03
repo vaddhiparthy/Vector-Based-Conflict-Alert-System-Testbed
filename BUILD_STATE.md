@@ -1,0 +1,15 @@
+# vCAS Build State
+- Last completed task: Partial Phase 6 (visual demo) + Phase 5 replay fetch path
+- Last commit: `5d3ed5b` (followed by local changes not yet tagged)
+- Next task: Phase 5/6 hardening + Phase 4 ML serving
+- Outstanding human actions:
+  - 5.5 OpenSky credentials (to enable fetch-to-cache and real replay runs)
+  - 5.9 BlueSky simulator enablement (install/verify external BlueSky engine if required)
+  - 6.3 Cesium token (optional; globe demo works without it using OSM imagery)
+  - 8.11 Oracle deployment prep (cloud account + VM)
+  - 8.13 Cloudflare tunnel routes (domain + DNS)
+  - 8.19 LinkedIn/Medium post drafts (author)
+- Known issues / deviations from `vCAS_Codex_Build_Prompt.md`:
+  - BlueSky integration is currently YAML-driven playback, not a full BlueSky engine sidecar.
+  - TorchServe / ML serving is stubbed via HTTP client toggle only; no model container is shipped.
+  - On Windows + OneDrive paths, `uv` cache and hardlink behavior can break installs; use `UV_CACHE_DIR=cache\\uv` and `UV_LINK_MODE=copy` for local dev in this repo.

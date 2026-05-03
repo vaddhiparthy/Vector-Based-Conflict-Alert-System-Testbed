@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vCAS Radar</title>
+    <style>
+      :root {
+        --bg: #050712;
+        --panel: #0f172a;
+        --panel-border: #1d293d;
+        --text: #dbeafe;
+        --muted: #93a4b8;
+        --good: #22c55e;
+        --warn: #f59e0b;
+        --bad: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      header {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--panel-border);
+        background: rgba(15, 23, 42, 0.78);
+        backdrop-filter: blur(2px);
+        position: sticky;
+        top: 0;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+
+      #statusBar {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .wrap {
+        display: grid;
+        grid-template-columns: minmax(280px, 320px) 1fr;
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .panel {
+        border: 1px solid var(--panel-border);
+        border-radius: 12px;
+        padding: 12px;
+        background: var(--panel);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input,
+      button,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        background: #0b1220;
+        color: #dbeafe;
+      }
+
+      button {
+        cursor: pointer;
+        margin-bottom: 6px;
+        border: 1px solid #334155;
+      }
+
+      button:hover {
+        border-color: #60a5fa;
+      }
+
+      button.primary {
+        background: #1d4ed8;
+        border-color: #3b82f6;
+      }
+
+      .row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      #radarCanvas {
+        width: 100%;
+        height: min(72vh, 560px);
+        display: block;
+        border-radius: 10px;
+        border: 1px solid var(--panel-border);
+        background: radial-gradient(circle at center, rgba(12, 18, 38, 0.95), #070d1b 66%, #03070e);
+      }
+
+      .token-status {
+        margin-bottom: 10px;
+        padding: 8px;
+        background: #0b1220;
+        border-radius: 8px;
+      }
+
+      .stack {
+        margin-top: 8px;
+      }
+
+      #events {
+        max-height: 320px;
+        overflow: auto;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .event {
+        border-bottom: 1px solid #1e293b;
+        padding: 6px 0;
+      }
+
+      .event:last-child {
+        border-bottom: none;
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 1px 8px;
+        margin-right: 6px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .badge.low {
+        background: rgba(34, 197, 94, 0.2);
+        color: #4ade80;
+      }
+
+      .badge.medium {
+        background: rgba(245, 158, 11, 0.2);
+        color: #fcd34d;
+      }
+
+      .badge.high {
+        background: rgba(239, 68, 68, 0.2);
+        color: #fecaca;
+      }
+
+      .gridTwo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .kpi {
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      .kpi b {
+        display: block;
+        color: #e2e8f0;
+        font-size: 16px;
+      }
+
+      @media (max-width: 980px) {
+        .wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>vCAS Radar</h1>
+      <div id="statusBar">Preparing environment...</div>
+      <div id="tokenHint" class="meta">Token check pending…</div>
+    </header>
+
+    <div class="wrap">
+      <section class="panel">
+        <div class="row">
+          <label>
+            Scenario
+            <input id="scenarioInput" value="scenarios/canonical/azo_showcase_random.yml" />
+          </label>
+          <label>
+            Mode
+            <select id="modeSelect">
+              <option value="simulator" selected>Simulator (waypoints)</option>
+              <option value="synthetic">Synthetic (constant velocity)</option>
+            </select>
+          </label>
+          <label>
+            Replay speed (ms / frame)
+            <input id="refreshMs" type="number" min="40" max="2000" step="20" />
+          </label>
+          <label>
+            Max history frames (UI performance)
+            <input id="maxHistory" type="number" min="60" max="2000" step="20" value="360" />
+          </label>
+          <label>
+            Display range (nautical miles from aerodrome)
+            <input id="rangeNm" type="number" min="2" max="30" step="1" />
+          </label>
+
+          <div class="gridTwo">
+            <button id="runReplayBtn" class="primary">Run scenario + animate</button>
+            <button id="connectLiveBtn">Connect live websocket</button>
+          </div>
+          <div class="gridTwo">
+            <button id="genBtn">Generate random traffic</button>
+            <input id="genSeed" placeholder="Seed (blank = auto)" />
+          </div>
+          <div class="gridTwo">
+            <input id="genBgCount" type="number" min="0" max="80" step="1" value="18" />
+            <input id="genDuration" type="number" min="120" max="1800" step="60" value="600" />
+          </div>
+          <div class="meta" id="genStatus"></div>
+          <div class="gridTwo">
+            <button id="saveShotBtn">Save screenshot</button>
+            <div class="meta" id="saveShotStatus"></div>
+          </div>
+          <div class="meta">
+            <a href="/demo/globe.html">Open Cesium globe demo</a>
+          </div>
+          <div class="stack">
+            <label>
+              History frame
+              <input id="frameSlider" type="range" min="0" max="0" value="0" />
+            </label>
+            <div id="frameLabel" class="meta">No replay loaded</div>
+            <button id="pauseBtn">Pause replay</button>
+          </div>
+        </div>
+        <div class="token-status small" id="tokenCard"></div>
+        <div class="stack">
+          <p class="small">
+            Environment tokens expected:
+            <br />
+            Cesium base map token: <span id="tokenName"></span>
+          </p>
+          <p class="small">
+            You can add these in a local <strong>.env</strong> file and restart the API:
+            <br />
+            <span id="tokenExamples"></span>
+          </p>
+          <p class="small">
+            For synthetic replay on this UI, OpenSky/Cesium/Telegram/OpenWeather values are optional.
+            Leaving them blank is valid.
+          </p>
+        </div>
+
+        <div class="gridTwo stack">
+          <div class="kpi">
+            Active aircraft
+            <b id="kpiAircraft">0</b>
+          </div>
+          <div class="kpi">
+            Total alerts
+            <b id="kpiAlerts">0</b>
+          </div>
+          <div class="kpi">
+            Alerting callsigns
+            <b id="kpiPairCount">0</b>
+          </div>
+          <div class="kpi">
+            Source mode
+            <b id="kpiMode">idle</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <canvas id="radarCanvas"></canvas>
+        <div class="stack">
+          <div id="frameInfo" class="meta">No frame yet.</div>
+          <div id="events"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="radar.js"></script>
+  </body>
+</html>

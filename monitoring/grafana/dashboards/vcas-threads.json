@@ -1,0 +1,54 @@
+{
+  "id": null,
+  "title": "vCAS Threads",
+  "tags": ["vcas", "threads"],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Thread 1 Candidates per Minute",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(increase(vcas_thread1_candidate_pairs_total[1m]))",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Thread 2A / 2B Inputs",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(rate(vcas_thread2a_inputs_total[1m]))",
+          "refId": "A",
+          "legendFormat": "thread2a_inputs"
+        },
+        {
+          "expr": "sum(rate(vcas_thread2b_inputs_total[1m]))",
+          "refId": "B",
+          "legendFormat": "thread2b_inputs"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Thread Processing Time",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "vcas_thread1_processing_seconds_bucket",
+          "refId": "A",
+          "hide": true
+        }
+      ]
+    }
+  ]
+}

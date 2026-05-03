@@ -1,0 +1,30 @@
+site_name: vCAS Testbed
+site_url: https://docs.vcas.local
+site_description: vCAS deterministic simulation testbed
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Knowledge:
+      - Wiki: wiki/vcas_knowledge_bank.md
+      - Build State: ../BUILD_STATE.md
+      - Scenarios:
+          - Canonical: wiki/vcas_knowledge_bank.md
+  - ADRs:
+      - Template: adr/ADR-000-template.md
+      - ADR-001 Coordinate Frame: adr/ADR-001-coordinate-frame-encision.md
+      - ADR-002 Spatial Index: adr/ADR-002-spatial-index.md
+      - ADR-004 Risk Model and Fallback: adr/ADR-004-risk-model-and-fallback.md
+      - ADR-005 Surveillance Source Unification: adr/ADR-005-surveillance-source-unification.md
+      - ADR-006 Visualization Stack: adr/ADR-006-visualization-stack.md
+      - ADR-007 Flight Plan & Wind: adr/ADR-007-flight-plan-wind-integration.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

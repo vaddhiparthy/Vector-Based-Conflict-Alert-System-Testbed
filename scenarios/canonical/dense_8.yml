@@ -1,0 +1,69 @@
+name: dense_8
+description: Dense 8-aircraft synthetic terminal pattern.
+aircraft:
+  - callsign: N601
+    icao24: AAA601
+    lat: 38.944
+    lon: -77.455
+    alt_m: 1000
+    gs_mps: 72.2
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N602
+    icao24: AAA602
+    lat: 38.943
+    lon: -77.457
+    alt_m: 1020
+    gs_mps: 70.0
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N603
+    icao24: AAA603
+    lat: 38.946
+    lon: -77.456
+    alt_m: 980
+    gs_mps: 74.0
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N604
+    icao24: AAA604
+    lat: 38.9455
+    lon: -77.454
+    alt_m: 1040
+    gs_mps: 71.5
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N605
+    icao24: AAA605
+    lat: 38.9445
+    lon: -77.452
+    alt_m: 1060
+    gs_mps: 73.5
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N606
+    icao24: AAA606
+    lat: 38.9435
+    lon: -77.451
+    alt_m: 990
+    gs_mps: 72.0
+    track_deg: 90
+    vs_mps: 0
+  - callsign: N607
+    icao24: AAA607
+    lat: 38.947
+    lon: -77.45
+    alt_m: 1030
+    gs_mps: 72.2
+    track_deg: 270
+    vs_mps: 0
+  - callsign: N608
+    icao24: AAA608
+    lat: 38.948
+    lon: -77.46
+    alt_m: 1010
+    gs_mps: 72.8
+    track_deg: 180
+    vs_mps: 0
+duration_s: 240
+dt_s: 1.0

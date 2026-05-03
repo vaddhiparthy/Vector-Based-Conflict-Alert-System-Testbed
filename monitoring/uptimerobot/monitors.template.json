@@ -1,0 +1,55 @@
+{
+  "api_key": "${UPTIME_ROBOT_API_KEY}",
+  "format": "json",
+  "logs": 1,
+  "monitors": [
+    {
+      "friendly_name": "vCAS API Health",
+      "type": 1,
+      "url": "${VCAS_BASE_URL}/health",
+      "interval": 30,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    },
+    {
+      "friendly_name": "vCAS Alert Feed",
+      "type": 1,
+      "url": "${VCAS_BASE_URL}/api/alerts",
+      "interval": 30,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    },
+    {
+      "friendly_name": "vCAS Audit Chain Verify",
+      "type": 1,
+      "url": "${VCAS_BASE_URL}/api/audit-chain-verify",
+      "interval": 60,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    },
+    {
+      "friendly_name": "vCAS Metrics Endpoint",
+      "type": 1,
+      "url": "${VCAS_BASE_URL}/metrics",
+      "interval": 60,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    },
+    {
+      "friendly_name": "vCAS Demo",
+      "type": 1,
+      "url": "${VCAS_BASE_URL}/demo",
+      "interval": 60,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    },
+    {
+      "friendly_name": "vCAS Dashboard",
+      "type": 1,
+      "url": "${VCAS_DASHBOARD_URL}",
+      "interval": 60,
+      "timeout": 120,
+      "alert_contacts": ["${UPTIME_ROBOT_TELEGRAM_CONTACT_ID}"]
+    }
+  ]
+}

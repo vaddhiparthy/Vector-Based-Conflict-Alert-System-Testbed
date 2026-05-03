@@ -1,0 +1,21 @@
+name: divergent
+description: Aircraft diverging from near crossing.
+aircraft:
+  - callsign: N501
+    icao24: AAA501
+    lat: 38.945
+    lon: -77.455
+    alt_m: 900
+    gs_mps: 78.0
+    track_deg: 45.0
+    vs_mps: 0.0
+  - callsign: N502
+    icao24: AAA502
+    lat: 38.946
+    lon: -77.454
+    alt_m: 900
+    gs_mps: 78.0
+    track_deg: 220.0
+    vs_mps: 0.0
+duration_s: 180
+dt_s: 1.0

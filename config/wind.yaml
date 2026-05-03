@@ -1,0 +1,11 @@
+bands:
+  - min_alt_m: 0
+    max_alt_m: 2000
+    east_mps: 0.0
+    north_mps: 0.0
+    down_mps: 0.0
+  - min_alt_m: 2000
+    max_alt_m: 60000
+    east_mps: 0.0
+    north_mps: 0.0
+    down_mps: 0.0

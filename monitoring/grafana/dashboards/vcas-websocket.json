@@ -1,0 +1,35 @@
+{
+  "id": null,
+  "title": "vCAS WebSocket",
+  "tags": ["vcas", "websocket"],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Active WebSocket Connections",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "vcas_websocket_connections",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Snapshots Sent",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(increase(vcas_websocket_snapshots_total[1m]))",
+          "refId": "A"
+        }
+      ]
+    }
+  ]
+}

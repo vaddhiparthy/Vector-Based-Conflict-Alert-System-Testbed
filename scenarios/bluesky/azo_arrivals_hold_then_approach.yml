@@ -1,0 +1,72 @@
+dt_s: 1.0
+duration_s: 420
+name: azo_arrivals_hold_then_approach
+description: >
+  Waypoint-driven terminal flow near KAZO: multiple arrivals spawn in, fly a
+  racetrack hold, then descend and line up for a simple final. One intruder
+  crosses the final at similar altitude to trigger vCAS only during the
+  developing conflict window.
+
+# Approximate KAZO vicinity (Kalamazoo/Battle Creek Intl)
+reference:
+  aerodrome:
+    lat: 42.2343889
+    lon: -85.5515556
+    alt_m: 100.0
+
+aircraft:
+  # Two "arrivals" in a racetrack hold north of the field, then turning south to final.
+  - callsign: AAL101
+    icao24: AAL101
+    waypoints:
+      - { t_s: 30, lat: 42.3200, lon: -85.5600, alt_m: 2400, gs_mps: 90, track_deg: 180, vs_mps: 0 }
+      - { t_s: 90, lat: 42.2500, lon: -85.5600, alt_m: 2400, gs_mps: 90, track_deg: 180, vs_mps: 0 }
+      - { t_s: 130, lat: 42.2500, lon: -85.6400, alt_m: 2400, gs_mps: 85, track_deg: 270, vs_mps: 0 }
+      - { t_s: 170, lat: 42.3200, lon: -85.6400, alt_m: 2400, gs_mps: 90, track_deg: 0, vs_mps: 0 }
+      - { t_s: 210, lat: 42.3200, lon: -85.5600, alt_m: 2400, gs_mps: 90, track_deg: 90, vs_mps: 0 }
+      # Leave hold, descend, and line up (simple straight-in).
+      - { t_s: 260, lat: 42.2650, lon: -85.6000, alt_m: 1700, gs_mps: 85, track_deg: 140, vs_mps: -2.8 }
+      - { t_s: 320, lat: 42.2350, lon: -85.5700, alt_m: 900, gs_mps: 75, track_deg: 140, vs_mps: -2.2 }
+      - { t_s: 380, lat: 42.2200, lon: -85.5550, alt_m: 450, gs_mps: 65, track_deg: 140, vs_mps: -1.5 }
+
+  - callsign: DAL202
+    icao24: DAL202
+    waypoints:
+      - { t_s: 55, lat: 42.3150, lon: -85.5450, alt_m: 2600, gs_mps: 95, track_deg: 180, vs_mps: 0 }
+      - { t_s: 115, lat: 42.2480, lon: -85.5450, alt_m: 2600, gs_mps: 95, track_deg: 180, vs_mps: 0 }
+      - { t_s: 155, lat: 42.2480, lon: -85.6250, alt_m: 2600, gs_mps: 90, track_deg: 270, vs_mps: 0 }
+      - { t_s: 195, lat: 42.3150, lon: -85.6250, alt_m: 2600, gs_mps: 95, track_deg: 0, vs_mps: 0 }
+      - { t_s: 235, lat: 42.3150, lon: -85.5450, alt_m: 2600, gs_mps: 95, track_deg: 90, vs_mps: 0 }
+      - { t_s: 280, lat: 42.2600, lon: -85.5900, alt_m: 1800, gs_mps: 88, track_deg: 145, vs_mps: -2.6 }
+      - { t_s: 340, lat: 42.2355, lon: -85.5650, alt_m: 950, gs_mps: 78, track_deg: 145, vs_mps: -2.0 }
+      - { t_s: 400, lat: 42.2210, lon: -85.5520, alt_m: 500, gs_mps: 66, track_deg: 145, vs_mps: -1.4 }
+
+  # Several background arrivals (spawn later), each with slightly different hold shapes/altitudes.
+  - callsign: UAL303
+    icao24: UAL303
+    waypoints:
+      - { t_s: 90, lat: 42.3050, lon: -85.5200, alt_m: 3200, gs_mps: 105, track_deg: 180, vs_mps: 0 }
+      - { t_s: 160, lat: 42.2500, lon: -85.5200, alt_m: 3200, gs_mps: 105, track_deg: 180, vs_mps: 0 }
+      - { t_s: 200, lat: 42.2500, lon: -85.6000, alt_m: 3200, gs_mps: 95, track_deg: 260, vs_mps: 0 }
+      - { t_s: 240, lat: 42.3050, lon: -85.6000, alt_m: 3200, gs_mps: 105, track_deg: 0, vs_mps: 0 }
+      - { t_s: 280, lat: 42.3050, lon: -85.5200, alt_m: 3200, gs_mps: 105, track_deg: 90, vs_mps: 0 }
+      - { t_s: 340, lat: 42.2550, lon: -85.5850, alt_m: 2200, gs_mps: 92, track_deg: 150, vs_mps: -2.0 }
+      - { t_s: 420, lat: 42.2220, lon: -85.5550, alt_m: 700, gs_mps: 70, track_deg: 150, vs_mps: -1.8 }
+
+  - callsign: SWA404
+    icao24: SWA404
+    waypoints:
+      - { t_s: 120, lat: 42.3000, lon: -85.6100, alt_m: 2800, gs_mps: 100, track_deg: 0, vs_mps: 0 }
+      - { t_s: 170, lat: 42.3300, lon: -85.5600, alt_m: 2800, gs_mps: 95, track_deg: 80, vs_mps: 0 }
+      - { t_s: 220, lat: 42.3000, lon: -85.5100, alt_m: 2800, gs_mps: 100, track_deg: 180, vs_mps: 0 }
+      - { t_s: 270, lat: 42.2700, lon: -85.5600, alt_m: 2800, gs_mps: 95, track_deg: 260, vs_mps: 0 }
+      - { t_s: 330, lat: 42.2450, lon: -85.5850, alt_m: 1900, gs_mps: 85, track_deg: 150, vs_mps: -2.2 }
+      - { t_s: 420, lat: 42.2215, lon: -85.5535, alt_m: 550, gs_mps: 67, track_deg: 150, vs_mps: -1.5 }
+
+  # Intruder crosses the final around the time arrivals descend (this should be the only real alert window).
+  - callsign: INTR99
+    icao24: INTR99
+    waypoints:
+      - { t_s: 250, lat: 42.2450, lon: -85.6200, alt_m: 950, gs_mps: 95, track_deg: 90, vs_mps: 0 }
+      - { t_s: 320, lat: 42.2450, lon: -85.5000, alt_m: 950, gs_mps: 95, track_deg: 90, vs_mps: 0 }
+

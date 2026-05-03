@@ -1,0 +1,21 @@
+name: parallel
+description: Parallel tracks with constant separation.
+aircraft:
+  - callsign: N401
+    icao24: AAA401
+    lat: 38.944
+    lon: -77.45
+    alt_m: 1200
+    gs_mps: 80.0
+    track_deg: 90.0
+    vs_mps: 0.0
+  - callsign: N402
+    icao24: AAA402
+    lat: 38.944
+    lon: -77.46
+    alt_m: 1200
+    gs_mps: 80.0
+    track_deg: 90.0
+    vs_mps: 0.0
+duration_s: 120
+dt_s: 1.0
