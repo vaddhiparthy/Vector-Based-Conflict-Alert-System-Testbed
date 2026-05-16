@@ -1,18 +1,24 @@
 {
   "name": "vcas",
   "version": "1.0.0",
-  "description": "This repository implements a research testbed for a vector-based conflict alert architecture inspired by the public concept described by the author and intended for simulation-only demonstration. It is engineered as a reproducible local stack for:",
-  "main": "index.js",
+  "description": "Browser assets for the vector-based conflict alert system testbed.",
+  "private": true,
   "directories": {
     "doc": "docs",
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --check web/app.js && node --check web/globe.js && node --check web/public_demo.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "vcas",
+    "simulation",
+    "radar",
+    "aviation",
+    "visualization"
+  ],
+  "author": "Sri Surya Sameer Vaddhiparthy",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "commonjs",
   "dependencies": {
     "cesium": "^1.140.0"

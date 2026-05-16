@@ -1,24 +1,24 @@
 # vCAS Testbed
 
-Vector-based conflict alert system testbed for deterministic simulation and review.
+Vector-based conflict alert system testbed for deterministic simulation, replay, audit, and visualization.
 
-## Quick links
+## System Surfaces
 
-- [Project knowledge bank](wiki/vcas_knowledge_bank.md)
-- [Build state](../BUILD_STATE.md)
-- [Canonical scenarios](../scenarios/canonical/)
-- [Public demo](../src/vcas/api/main.py#demo)
+- FastAPI runtime under `src/vcas/api/`
+- Core engine, geometry, risk, and audit logic under `src/vcas/`
+- Browser radar/globe surfaces under `web/`
+- Streamlit dashboard under `dashboard/`
+- Canonical scenarios under `scenarios/canonical/`
+- Monitoring templates under `monitoring/`
 
-## Author context
+## Evidence
 
-This repository is a research scaffold aligned to the concept published by
-Sri Surya Sameer Vaddhiparthy:
+- Regression tests in `tests/`
+- Build checkpoint in `BUILD_STATE.md`
+- Demo parameter reference in `docs/demo_parameter_reference.md`
+- Architecture decision records in `docs/adr/`
+- Knowledge bank in `docs/wiki/vcas_knowledge_bank.md`
 
-https://blog.vaddhiparthy.com/2025/11/hybrid-physics-and-aiconcept-for-real.html
+## Boundaries
 
-## Evidence surface
-
-- `tests/` for reproducibility and regression gates
-- Grafana dashboards in `monitoring/grafana/dashboards/`
-- Infrastructure scaffolding under `infra/terraform/`
-- Public demo artifacts under `web/` and dashboard checks in `/demo`
+This is a simulation testbed. Replay mode, external credentials, and deployment scaffolds are documented as runtime options, not mandatory local requirements.

@@ -70,6 +70,3 @@
   connectSocket();
   loop();
 })();
-(function () {
-  const APP_PREFIX = window.location.pathname.startsWith("/vcas-demo/") ? "/vcas-demo" : "";
-  const apiUrl = (path) => `${APP_PREFIX}${path}`;

@@ -19,7 +19,7 @@ from __future__ import annotations
 import argparse
 import random
 from dataclasses import asdict, dataclass
-from math import cos, sin, radians
+from math import cos, radians
 from pathlib import Path
 
 import yaml
