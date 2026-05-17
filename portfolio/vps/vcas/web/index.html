@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>vCAS Demo</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; margin: 20px; }
+      #alerts { white-space: pre; border: 1px solid #ccc; padding: 10px; min-height: 220px; }
+      #aircraft { white-space: pre; border: 1px solid #ccc; padding: 10px; min-height: 160px; }
+      .small { color: #555; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>vCAS Demo</h1>
+    <p class="small">Demo dashboard for deterministic synthetic scenarios.</p>
+    <section>
+      <h3>Run scenario</h3>
+      <label>Scenario YAML:
+        <input id="scenarioInput" size="48" value="scenarios/canonical/head_on.yml" />
+      </label>
+      <label>
+        <input id="historyToggle" type="checkbox" checked /> capture history
+      </label>
+      <button id="runBtn">Run simulation</button>
+      <span id="runStatus" class="small"></span>
+    </section>
+    <p><button id="connectBtn">Connect</button> <span id="status" class="small">disconnected</span></p>
+    <p><a href="radar.html">Open radar-style flight replay UI</a></p>
+    <div id="historyControls" style="display:none;">
+      <label>Replay frame
+        <input id="historySlider" type="range" min="0" max="0" step="1" value="0" />
+      </label>
+      <span id="historyIndex" class="small"></span>
+    </div>
+    <h3>Aircraft</h3>
+    <div id="aircraft"></div>
+    <h3>Alerts</h3>
+    <div id="frameSummary" class="small"></div>
+    <div id="alerts"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

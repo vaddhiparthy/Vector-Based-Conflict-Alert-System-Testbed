@@ -1,0 +1,21 @@
+name: professional
+services:
+  vcas:
+    image: professional-vcas:latest
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    container_name: professional-vcas
+    restart: unless-stopped
+    env_file:
+      - /opt/platform/vault/secrets/professional/vcas.env
+    expose:
+      - "8000"
+    networks:
+      - platform_edge
+      - professional_net
+networks:
+  platform_edge:
+    external: true
+  professional_net:
+    external: true

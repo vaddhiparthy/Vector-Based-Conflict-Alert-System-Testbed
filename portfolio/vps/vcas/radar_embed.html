@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vCAS Radar (Embed)</title>
+    <style>
+      :root {
+        --bg: #050712;
+        --panel: #0f172a;
+        --panel-border: #1d293d;
+        --text: #dbeafe;
+        --muted: #93a4b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Keep the same DOM ids as radar.html so radar.js can run unchanged. */
+      header {
+        display: none;
+      }
+
+      .wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .panel {
+        border: 1px solid var(--panel-border);
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(15, 23, 42, 0.72);
+      }
+
+      input,
+      button,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+        background: #0b1220;
+        color: #dbeafe;
+      }
+
+      button.primary {
+        background: #1d4ed8;
+        border-color: #3b82f6;
+      }
+
+      .gridTwo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .meta,
+      .small {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      #radarCanvas {
+        width: 100%;
+        height: 640px;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid var(--panel-border);
+        background: radial-gradient(circle at center, rgba(12, 18, 38, 0.95), #070d1b 66%, #03070e);
+      }
+
+      /* Hide verbose sections for embed. */
+      #tokenHint,
+      #tokenCard,
+      #tokenName,
+      #tokenExamples,
+      #saveShotBtn,
+      #saveShotStatus {
+        display: none;
+      }
+
+      #events {
+        max-height: 180px;
+        overflow: auto;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .event {
+        border-bottom: 1px solid #1e293b;
+        padding: 6px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 1px 8px;
+        margin-right: 6px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .badge.low {
+        background: rgba(34, 197, 94, 0.2);
+        color: #4ade80;
+      }
+
+      .badge.medium {
+        background: rgba(245, 158, 11, 0.2);
+        color: #fcd34d;
+      }
+
+      .badge.high {
+        background: rgba(239, 68, 68, 0.2);
+        color: #fecaca;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>vCAS Radar</h1>
+      <div id="statusBar">Preparing…</div>
+      <div id="tokenHint" class="meta">Token check pending…</div>
+    </header>
+
+    <div class="wrap">
+      <section class="panel">
+        <div class="gridTwo">
+          <button id="genBtn">Generate random traffic</button>
+          <input id="genSeed" placeholder="Seed (blank = auto)" />
+        </div>
+        <div class="gridTwo" style="margin-top: 8px">
+          <input id="genBgCount" type="number" min="0" max="80" step="1" value="18" />
+          <input id="genDuration" type="number" min="120" max="1800" step="60" value="600" />
+        </div>
+        <div id="genStatus" class="meta" style="margin-top: 6px"></div>
+
+        <div class="gridTwo" style="margin-top: 10px">
+          <button id="runReplayBtn" class="primary">Run scenario</button>
+          <button id="pauseBtn">Pause</button>
+        </div>
+
+        <div style="display:none">
+          <!-- Keep required ids; hidden for embed -->
+          <input id="scenarioInput" value="scenarios/canonical/azo_showcase_random.yml" />
+          <select id="modeSelect"><option value="simulator" selected>Simulator</option></select>
+          <input id="refreshMs" type="number" value="120" />
+          <input id="maxHistory" type="number" value="360" />
+          <input id="rangeNm" type="number" value="20" />
+          <button id="connectLiveBtn">Connect</button>
+          <input id="frameSlider" type="range" min="0" max="0" value="0" />
+          <div id="frameLabel"></div>
+          <div id="tokenCard"></div>
+          <span id="tokenName"></span>
+          <span id="tokenExamples"></span>
+          <button id="saveShotBtn"></button>
+          <div id="saveShotStatus"></div>
+          <div id="kpiAircraft"></div>
+          <div id="kpiAlerts"></div>
+          <div id="kpiPairCount"></div>
+          <div id="kpiMode"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <canvas id="radarCanvas"></canvas>
+        <div id="frameInfo" class="meta" style="margin-top: 6px"></div>
+        <div id="events" style="margin-top: 8px"></div>
+      </section>
+    </div>
+
+    <script src="radar.js"></script>
+  </body>
+</html>

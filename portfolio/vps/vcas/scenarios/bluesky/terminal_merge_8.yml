@@ -1,0 +1,68 @@
+name: terminal-merge-density
+duration_s: 180
+dt_s: 1.0
+aircraft:
+  - callsign: BLU01
+    icao24: BLU001
+    lat: 38.944
+    lon: -77.460
+    alt_m: 900
+    gs_mps: 72.0
+    track_deg: 90.0
+    vs_mps: 0.0
+  - callsign: BLU02
+    icao24: BLU002
+    lat: 38.946
+    lon: -77.462
+    alt_m: 900
+    gs_mps: 71.0
+    track_deg: 85.0
+    vs_mps: 0.0
+  - callsign: BLU03
+    icao24: BLU003
+    lat: 38.948
+    lon: -77.455
+    alt_m: 1000
+    gs_mps: 70.0
+    track_deg: 180.0
+    vs_mps: 0.0
+  - callsign: BLU04
+    icao24: BLU004
+    lat: 38.942
+    lon: -77.455
+    alt_m: 950
+    gs_mps: 69.0
+    track_deg: 0.0
+    vs_mps: 0.0
+  - callsign: BLU05
+    icao24: BLU005
+    lat: 38.943
+    lon: -77.466
+    alt_m: 950
+    gs_mps: 73.0
+    track_deg: 95.0
+    vs_mps: 0.0
+  - callsign: BLU06
+    icao24: BLU006
+    lat: 38.947
+    lon: -77.448
+    alt_m: 920
+    gs_mps: 74.0
+    track_deg: 95.0
+    vs_mps: 0.0
+  - callsign: BLU07
+    icao24: BLU007
+    lat: 38.9472
+    lon: -77.464
+    alt_m: 1000
+    gs_mps: 67.0
+    track_deg: 270.0
+    vs_mps: 0.0
+  - callsign: BLU08
+    icao24: BLU008
+    lat: 38.9442
+    lon: -77.452
+    alt_m: 980
+    gs_mps: 68.0
+    track_deg: 275.0
+    vs_mps: 0.0

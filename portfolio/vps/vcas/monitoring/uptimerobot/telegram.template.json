@@ -1,0 +1,8 @@
+{
+  "api_key": "${UPTIME_ROBOT_API_KEY}",
+  "format": "json",
+  "friendly_name": "vCAS Telegram",
+  "type": 3,
+  "value": "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}",
+  "is_paused": 0
+}

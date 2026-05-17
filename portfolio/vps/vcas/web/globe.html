@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>vCAS Globe Demo</title>
+    <link rel="stylesheet" href="/demo/vendor/cesium/Widgets/widgets.css" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b1220;
+        --panel: rgba(10, 15, 28, 0.86);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --danger: #ff4d4d;
+        --warn: #ffcc00;
+        --ok: #2bd576;
+        --btn: rgba(255, 255, 255, 0.10);
+        --btnHover: rgba(255, 255, 255, 0.14);
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        overflow: hidden;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--text);
+      }
+      #cesiumContainer {
+        position: absolute;
+        inset: 0;
+      }
+      #hud {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        pointer-events: none;
+      }
+      .panel {
+        pointer-events: auto;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        backdrop-filter: blur(10px);
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      select,
+      input {
+        height: 30px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.25);
+        color: var(--text);
+        padding: 0 10px;
+        outline: none;
+      }
+      button {
+        height: 30px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--btn);
+        color: var(--text);
+        padding: 0 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--btnHover);
+      }
+      #status {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+        line-height: 1.35;
+      }
+      #pillbar {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .pill {
+        pointer-events: auto;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .pill strong {
+        color: var(--text);
+      }
+      .pill.ok strong {
+        color: var(--ok);
+      }
+      .pill.warn strong {
+        color: var(--warn);
+      }
+      .pill.danger strong {
+        color: var(--danger);
+      }
+      a,
+      a:visited {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      a:hover {
+        border-bottom-color: rgba(255, 255, 255, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+
+    <div id="hud">
+      <div class="panel">
+        <div class="row">
+          <span class="label">Scenario</span>
+          <select id="scenario">
+            <option value="scenarios/bluesky/azo_wide_traffic_late_conflict.yml" selected>
+              azo_wide_traffic_late_conflict.yml
+            </option>
+            <option value="scenarios/bluesky/azo_arrivals_hold_then_approach.yml">
+              azo_arrivals_hold_then_approach.yml
+            </option>
+            <option value="scenarios/bluesky/azo_flow_22.yml">azo_flow_22.yml</option>
+            <option value="scenarios/canonical/head_on.yml">head_on.yml</option>
+            <option value="scenarios/canonical/perpendicular.yml">perpendicular.yml</option>
+            <option value="scenarios/canonical/overtake.yml">overtake.yml</option>
+            <option value="scenarios/canonical/dense_8.yml">dense_8.yml</option>
+            <option value="scenarios/canonical/complex_traffic.yml">complex_traffic.yml</option>
+          </select>
+          <button id="run">Run Scenario + Animate</button>
+          <button id="reset">Reset View</button>
+          <button id="save">Save screenshot</button>
+          <span class="label"
+            ><a href="/demo/radar.html">Radar</a></span
+          >
+        </div>
+        <div id="status">Loading client config…</div>
+      </div>
+
+      <div id="pillbar">
+        <div class="pill" id="pillToken">Cesium token: <strong>…</strong></div>
+        <div class="pill" id="pillAircraft">Aircraft: <strong>0</strong></div>
+        <div class="pill" id="pillAlerts">Alerts: <strong>0</strong></div>
+      </div>
+    </div>
+
+    <script>
+      // Ensure Cesium can resolve WebWorker modules from the same origin.
+      window.CESIUM_BASE_URL = "/demo/vendor/cesium/";
+    </script>
+    <script src="/demo/vendor/cesium/Cesium.js"></script>
+    <script src="/demo/globe.js"></script>
+  </body>
+</html>

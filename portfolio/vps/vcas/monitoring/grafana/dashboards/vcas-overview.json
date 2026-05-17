@@ -1,0 +1,47 @@
+{
+  "id": null,
+  "title": "vCAS Overview",
+  "tags": ["vcas"],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Frames Processed",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(vcas_frames_processed_total)",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "gauge",
+      "title": "Active Aircraft",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "vcas_active_aircraft",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Frame Processing Latency (s)",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "rate(vcas_frame_processing_seconds_sum[1m]) / clamp_min(rate(vcas_frame_processing_seconds_count[1m]), 1)",
+          "refId": "A"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+name: perpendicular
+description: Crossing geometry at near 90-degree angle.
+aircraft:
+  - callsign: N201
+    icao24: AAA201
+    lat: 38.95
+    lon: -77.46
+    alt_m: 1000
+    gs_mps: 72.2
+    track_deg: 90.0
+    vs_mps: 0.0
+  - callsign: N202
+    icao24: AAA202
+    lat: 38.94
+    lon: -77.45
+    alt_m: 1000
+    gs_mps: 72.2
+    track_deg: 0.0
+    vs_mps: 0.0
+duration_s: 120
+dt_s: 1.0

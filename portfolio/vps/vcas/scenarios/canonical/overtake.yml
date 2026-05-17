@@ -1,0 +1,21 @@
+name: overtake
+description: Rear-right overtaking geometry on same track.
+aircraft:
+  - callsign: N301
+    icao24: AAA301
+    lat: 38.945
+    lon: -77.455
+    alt_m: 1000
+    gs_mps: 95.0
+    track_deg: 90.0
+    vs_mps: 0.0
+  - callsign: N302
+    icao24: AAA302
+    lat: 38.943
+    lon: -77.4555
+    alt_m: 1000
+    gs_mps: 70.0
+    track_deg: 90.0
+    vs_mps: 0.0
+duration_s: 180
+dt_s: 1.0

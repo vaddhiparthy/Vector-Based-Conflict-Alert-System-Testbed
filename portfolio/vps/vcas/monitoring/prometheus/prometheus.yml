@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "vcas-api"
+    static_configs:
+      - targets: ["vcas-api:8000"]
+    metrics_path: /metrics
+    scrape_interval: 5s
+
+  - job_name: "vcas-metrics"
+    static_configs:
+      - targets: ["vcas-api:8000"]

@@ -1,0 +1,7 @@
+source_mode: synthetic
+scenario_path: scenarios/canonical/head_on.yml
+rate_hz: 1
+replay_airport: KCLT
+replay_start_utc: "2026-01-01T00:00:00Z"
+replay_duration_s: 3600
+replay_cache_root: cache/opensky

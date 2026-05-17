@@ -1,0 +1,20 @@
+{
+  "name": "vcas",
+  "version": "1.0.0",
+  "description": "This repository implements a research testbed for a vector-based conflict alert architecture inspired by the public concept described by the author and intended for simulation-only demonstration. It is engineered as a reproducible local stack for:",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cesium": "^1.140.0"
+  }
+}

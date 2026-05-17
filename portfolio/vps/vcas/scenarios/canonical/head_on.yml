@@ -1,0 +1,23 @@
+name: head_on
+description: Two aircraft on direct reciprocal tracks with visible conflict.
+reference:
+  a:
+    callsign: N101
+    icao24: AAAA01
+    lat: 38.944
+    lon: -77.470
+    alt_m: 1000
+    gs_mps: 72.0
+    track_deg: 90.0
+    vs_mps: 0.0
+  b:
+    callsign: N102
+    icao24: AAAA02
+    lat: 38.944
+    lon: -77.430
+    alt_m: 1000
+    gs_mps: 72.0
+    track_deg: 270.0
+    vs_mps: 0.0
+duration_s: 120
+dt_s: 1.0
