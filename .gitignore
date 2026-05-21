@@ -7,8 +7,3 @@ __pycache__/
 *.pyc
 *.bak*
 node_modules/
-cache/
-data/
-outputs/
-runs/
-agent_downloads/

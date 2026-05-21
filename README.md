@@ -1,144 +1,148 @@
-# Vector-Based Conflict Alert System Testbed
+# vCAS
 
-This repository implements a deterministic simulation testbed for a vector-based conflict alert system. It is built for local research, replay, inspection, and visualization of aircraft-pair conflict logic.
+## Vector-Based Conflict Alert System Testbed
 
-## Implemented System
+This repository implements a research testbed for a vector-based conflict alert architecture inspired by the public concept described by the author and intended for simulation-only demonstration. It is engineered as a reproducible local stack for:
 
-| Area | Implementation |
-| --- | --- |
-| Physics and coordinates | Coordinate conversion, motion integration, closest-approach calculations, and alert thresholds |
-| Surveillance sources | Synthetic, replay, and simulator-mode adapters behind a shared source switch |
-| Conflict engine | Threaded pair lifecycle processing, risk scoring, alert records, and audit chain verification |
-| Scenarios | Canonical, generated, BlueSky-style, and performance scenarios |
-| API | FastAPI endpoints for scenario execution, history replay, audit drilldown, client config, WebSocket snapshots, and Prometheus metrics |
-| Visualization | Radar-style browser demo, Cesium globe demo, Streamlit dashboard, and replay scrubber |
-| Observability | Prometheus metrics, Grafana dashboard templates, trace/snapshot helpers, and audit rows |
-| Infrastructure | Docker Compose, VPS compose file, Terraform scaffold, monitoring templates |
+- deterministic surveillance-to-conflict math
+- auditable pair state transitions across screening threads
+- risk scoring composition and deterministic ML fallback behavior
+- replayable demonstrations from synthetic and recorded sources
 
-## Architecture
+The project is organized as a modular monorepo with explicit interfaces between:
+
+- coordinate/physics math
+- surveillance ingestion adapters
+- threaded conflict lifecycle processing
+- risk evaluation
+- web-serving and observability
+- infrastructure services
+
+## License and Use
+
+Source is published for review, learning, and private evaluation only.
+Operational, governmental, academic, and commercial deployment is not part of this public testbed; any non-local deployment decisions require explicit author authorization.  
+
+This repository defaults to a non-commercial, author-restricted posture and all public usage should follow the author-defined policy for citation and distribution.
+
+## Current Build State
+
+Refer to [`BUILD_STATE.md`](BUILD_STATE.md) for the current checkpoint and blocked actions.
+
+## Knowledge Base
+
+- [`vCAS Knowledge Bank`](docs/wiki/vcas_knowledge_bank.md)
+
+## Local Runtime
 
 ```text
-scenario or surveillance source
-  -> normalized frames
-  -> vector geometry and pair screening
-  -> risk scoring
-  -> alert lifecycle state
-  -> audit chain and metrics
-  -> API / WebSocket / dashboard / radar demo
-```
-
-## Repository Layout
-
-| Path | Purpose |
-| --- | --- |
-| `src/vcas/` | Core engine, API, configuration, surveillance adapters, risk, observability, and utilities |
-| `tests/` | Regression tests for API, physics, surveillance, scenarios, grid index, and engine behavior |
-| `scenarios/` | Canonical, generated, BlueSky-style, and performance scenario files |
-| `web/` | Browser radar/globe/demo assets |
-| `dashboard/` | Streamlit controller and replay surface |
-| `config/` | Runtime risk, surveillance, and wind configuration |
-| `monitoring/` | Prometheus, Grafana, and UptimeRobot templates |
-| `infra/terraform/` | Deployment scaffold |
-| `docs/` | MkDocs pages, ADRs, demo parameters, and knowledge bank |
-| `scripts/` | Smoke, benchmark, scenario generation, replay, and launch helpers |
-
-## Local Setup
-
-Python dependencies use `uv`:
-
-```powershell
+cd /path/to/vCAS
 uv sync
+cp .env.example .env  # optional for synthetic-only demo
+.\.venv\Scripts\python.exe -m uvicorn vcas.api.main:app --host 0.0.0.0 --port 8000
 ```
 
-On Windows/OneDrive paths, use copy mode if hardlinks fail:
+If .env is present but `python.exe` is not found by your shell, use:
 
-```powershell
-$env:UV_CACHE_DIR = "cache\uv"
-$env:UV_LINK_MODE = "copy"
-uv sync
-```
-
-Optional local configuration:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Synthetic scenarios do not require external credentials.
-
-## Run
-
-Start the API:
-
-```powershell
-uv run uvicorn vcas.api.main:app --host 0.0.0.0 --port 8000
-```
-
-Or use the Windows launcher:
-
-```powershell
+```text
 powershell -ExecutionPolicy Bypass -File scripts\start_vcas_radar.ps1
 ```
 
-Local URLs:
+If you hit a `python.exe` not found popup from command windows, use the local launcher:
 
-- Health: `http://localhost:8000/health`
-- Radar demo: `http://localhost:8000/demo/radar.html`
-- Basic viewer: `http://localhost:8000/demo/index.html`
-- Metrics: `http://localhost:8000/metrics`
-
-## API
-
-| Endpoint | Purpose |
-| --- | --- |
-| `GET /api/run-synthetic?scenario=...` | Run a synthetic scenario and return alerts |
-| `GET /api/run-synthetic?scenario=...&with_history=true` | Return replay snapshots for scrubber playback |
-| `GET /api/run?source_mode=synthetic\|replay\|simulator` | Run through the configured source switch |
-| `GET /api/alerts` | Return audit rows for the latest run |
-| `GET /api/audit-drilldown?alert_id=...` | Return the audit chain and trigger frames for one alert |
-| `GET /api/audit-chain-verify` | Verify hash-chain integrity |
-| `GET /api/client-config` | Expose non-secret client runtime settings |
-| `GET /metrics` | Export Prometheus metrics |
-| `WS /ws/surveillance` | Stream aircraft and alert snapshots |
-
-## Validation
-
-```powershell
-uv run pytest -q
-uv run python scripts\smoke_demo.py
-uv run python scripts\benchmark_load.py --aircraft-count 200 --duration-s 5 --max-ms-per-frame 1000
+```text
+scripts\start_vcas_radar.bat
 ```
 
-The test suite covers deterministic physics, coordinate behavior, scenario execution, API response shape, surveillance source handling, and benchmark paths.
+or
 
-## Demo Configuration
+```text
+powershell -ExecutionPolicy Bypass -File scripts\start_vcas_radar.ps1
+```
 
-Default synthetic mode:
+The app now reads values from local `.env` directly on startup, so adding tokens there is enough for local runs.
+
+Core runtime services are:
+
+- PostgreSQL 16
+- Redis 7
+- MinIO (S3-compatible storage)
+
+## API / demo endpoints
+
+- `GET /api/run-synthetic?scenario=...` runs a scenario and returns alerts.
+- `GET /api/run-synthetic?scenario=...&with_history=true` returns a per-frame snapshot list for scrubber replay.
+- `GET /api/run?source_mode=synthetic|replay|simulator` runs using the same source switch used by settings.
+- `GET /api/alerts` returns in-memory audit rows for the last run.
+- `GET /api/audit-chain-verify` checks hash-chain integrity.
+- `GET /metrics` exposes Prometheus counters and gauges.
+
+## Front-end
+
+- `web/index.html` provides a lightweight WebSocket viewer and run-with-history scrubber.
+- `dashboard/app.py` provides a Streamlit controller with replay scrubber and pair drill-down.
+- `web/radar.html` provides a live/replay animated radar-style map for movement and alert visualization.
+
+## Performance check
+
+Run a deterministic 200-aircraft throughput check for the browser-rate target:
+
+```text
+uv run python scripts/benchmark_load.py --aircraft-count 200 --duration-s 5 --max-ms-per-frame 1000
+```
+
+## Radar demo (flight radar-style animation)
+
+For synthetic demo (no external credentials), set:
 
 ```text
 VCAS_SOURCE_MODE=synthetic
 VCAS_SCENARIO_PATH=scenarios/canonical/head_on.yml
 ```
 
-Optional external values:
+Recommended test flow:
+
+1. Start with:
+   `powershell -ExecutionPolicy Bypass -File scripts\start_vcas_radar.ps1`
+2. Open `http://localhost:8000/health` (should return JSON `status: ok`)
+3. Open `http://localhost:8000/demo/radar.html`
+4. Click **Run scenario + animate**
+
+For synthetic demo (no external credentials), set:
+
+```text
+VCAS_SOURCE_MODE=synthetic
+VCAS_SCENARIO_PATH=scenarios/canonical/head_on.yml
+```
+
+The radar page reads these environment-driven values from `/api/client-config`:
 
 - `VCAS_CESIUM_TOKEN`
 - `VCAS_OPENSKY_USERNAME`
 - `VCAS_OPENSKY_PASSWORD`
-- `VCAS_REPLAY_AIRPORT`
+
+Replay-mode extras are optional:
+
+- `VCAS_OPENSKY_USERNAME`
+- `VCAS_OPENSKY_PASSWORD`
+- `VCAS_REPLAY_AIRPORT` (default: `KAZO`)
 - `VCAS_REPLAY_START_UTC`
 - `VCAS_REPLAY_DURATION_S`
 - `VCAS_REPLAY_CACHE_ROOT`
 
-See [`docs/demo_parameter_reference.md`](docs/demo_parameter_reference.md) for the full runtime parameter reference.
+Where to check tokens and required inputs:
 
-## Current Limits
+- [`docs/demo_parameter_reference.md`](docs/demo_parameter_reference.md)
+- [`BUILD_STATE.md`](BUILD_STATE.md)
 
-- Replay mode depends on external OpenSky credentials and cached data availability.
-- BlueSky integration is YAML-driven playback, not a shipped BlueSky engine sidecar.
-- ML serving is guarded by an HTTP client toggle; no model-serving container is included.
-- Generated scenarios and screenshots are development artifacts, not benchmark claims.
+Optional: add tokens to your environment or `.env` and restart the API.
 
-## License and Use
+For exact credentials needed per external service and copy/paste `.env` examples, use:
 
-Source is published for review, learning, and private evaluation under the repository license. Operational, governmental, academic, or commercial deployment is outside the public testbed scope and requires explicit author authorization.
+- [`docs/demo_parameter_reference.md`](docs/demo_parameter_reference.md)
+
+## Planned Execution Model
+
+- Single task completion pattern with checkpoint updates.
+- No hidden behavior: every state transition and pair movement is logged.
+- No feature is presented as complete unless it has deterministic evidence in code or test artifacts.

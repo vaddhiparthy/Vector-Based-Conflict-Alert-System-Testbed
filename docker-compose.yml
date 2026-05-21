@@ -34,6 +34,7 @@ services:
     build:
       context: .
       dockerfile: docker/api.Dockerfile
+    pull_policy: never
     working_dir: /app
     ports:
       - "8000:8000"
@@ -51,6 +52,7 @@ services:
     build:
       context: .
       dockerfile: docker/dashboard.Dockerfile
+    pull_policy: never
     working_dir: /app
     ports:
       - "8501:8501"
